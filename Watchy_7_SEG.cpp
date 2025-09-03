@@ -1,17 +1,10 @@
 #include "Watchy_7_SEG.h"
 
-// DARKMODE
-// #define DARKMODE false
-
-// HOUR_SET, change it to 12 to switch to 12-hour
-// #define HOUR_SET 24
-
 // change it to your location
 //          latitude, longitude, timezone
 #define LOC 31.00, 121.00, 8
 
 RTC_DATA_ATTR bool DARKMODE = false;
-// RTC_DATA_ATTR int showState = 0;
 RTC_DATA_ATTR bool HOUR_SET = true;
 
 moonPhaser moonP;
@@ -23,8 +16,6 @@ void Watchy7SEG::handleButtonPress()
     uint64_t wakeupBit = esp_sleep_get_ext1_wakeup_status();
     if (wakeupBit & UP_BTN_MASK)
     {
-      // showState++;
-      // if (showState > 2) { showState = 0; }
       HOUR_SET = !HOUR_SET;
       RTC.read(currentTime);
       showWatchFace(true);
@@ -32,8 +23,6 @@ void Watchy7SEG::handleButtonPress()
     }
     if (wakeupBit & DOWN_BTN_MASK)
     {
-      // showState--;
-      // if (showState < 0) { showState = 2; }
       HOUR_SET = !HOUR_SET;
       RTC.read(currentTime);
       showWatchFace(true);
@@ -67,16 +56,9 @@ void Watchy7SEG::drawWatchFace()
   drawTime();
   drawDate();
   drawSteps();
-  // drawWeather();
   drawBattery();
-  // drawEva();
-  // drawLine();
 
   display.drawBitmap(118, 168, WIFI_CONFIGURED ? wifi : wifioff, 25, 18, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
-  // if(BLE_CONFIGURED)
-  // {
-  //     display.drawBitmap(100, 75, bluetooth, 13, 21, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
-  // }
   drawMoon();
   drawSun();
 }
@@ -85,26 +67,6 @@ void Watchy7SEG::drawTime()
 {
   display.setFont(&DSEG7_Classic_Bold_53);
   display.setCursor(6, 53 + 5);
-  // int displayHour;
-  // if(HOUR_SET==12)
-  // {
-  //     displayHour = ((currentTime.Hour+11)%12)+1;
-  // }
-  // else
-  // {
-  //     displayHour = currentTime.Hour;
-  // }
-  // if(displayHour < 10)
-  // {
-  //     display.print("0");
-  // }
-  // display.print(displayHour);
-  // display.print(":");
-  // if(currentTime.Minute < 10)
-  // {
-  //     display.print("0");
-  // }
-  // display.println(currentTime.Minute);
   long ss = currentTime.Hour * 60 + currentTime.Minute;
   int sh = ss / 60;
 
@@ -235,16 +197,6 @@ void Watchy7SEG::drawDate()
   display.getTextBounds(month, 60, 110, &x1, &y1, &w, &h);
   display.setCursor(79 - w, 110);
   display.println(month);
-
-  // display.setFont(&DSEG7_Classic_Bold_25);
-  // display.setCursor(6, 120);
-  // if(currentTime.Day < 10)
-  // {
-  // display.print("0");
-  // }
-  // display.println(currentTime.Day);
-  // display.setCursor(6, 154);
-  // display.println(tmYearToCalendar(currentTime.Year));// offset from 1970, since year is stored in uint8_t
 
   int da = currentTime.Day;
   int ye = currentTime.Year + 1970;
@@ -390,33 +342,9 @@ void Watchy7SEG::drawSteps()
   // reset step counter at midnight
   if (currentTime.Hour == 0 && currentTime.Minute == 0)
   {
-    // st4 = st3;
-    // st3 = st2;
-    // st2 = st1;
-    // st1 = stepCount;
     sensor.resetStepCounter();
-    // stepCount = 0;
   }
   uint32_t stepCount = sensor.getCounter();
-
-  // display.drawBitmap(10, 165, steps, 19, 23, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
-  // display.setCursor(6, 190);
-  // if (stepCount >= 10000)
-  //     ;
-  // else if (stepCount >= 1000)
-  //     display.print("0");
-  // else if (stepCount >= 100)
-  //     display.print("00");
-  // else if (stepCount >= 10)
-  //     display.print("000");
-  // else if (stepCount >= 0)
-  //     display.print("0000");
-  // display.println(stepCount);
-
-  // uint32_t l1 = 61 * st1 / 20000;
-  // uint32_t l2 = 61 * st2 / 20000;
-  // uint32_t l3 = 61 * st3 / 20000;
-  // uint32_t l4 = 61 * st4 / 20000;
   uint32_t l5 = 61 * stepCount / 10000;
 
   if (l5 > 61)
@@ -424,12 +352,7 @@ void Watchy7SEG::drawSteps()
     l5 = 61;
   }
 
-  // display.fillRect(125, 73 + 61 - l1, 9, l4, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
-  // display.fillRect(143, 73 + 61 - l1, 9, l3, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
-  // display.fillRect(161, 73 + 61 - l1, 9, l2, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
-  // display.fillRect(179, 73 + 61 - l1, 9, l1, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
   display.fillRect(131, 148, l5, 9, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
-  // display.
 
   int a = stepCount / 10000;
   stepCount = stepCount % 10000;
@@ -547,8 +470,6 @@ void Watchy7SEG::drawSteps()
 }
 void Watchy7SEG::drawBattery()
 {
-  // display.drawBitmap(154, 73, battery, 37, 21, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
-  // display.fillRect(159, 78, 27, BATTERY_SEGMENT_HEIGHT, DARKMODE ? GxEPD_BLACK : GxEPD_WHITE);//clear battery segments
   int8_t batteryLevel = 0;
   float VBAT = getBatteryVoltage();
   if (VBAT > 4.1)
@@ -589,10 +510,7 @@ void Watchy7SEG::drawBattery()
     batteryLevel = 0;
   }
 
-  // for(int8_t batterySegments = 0; batterySegments < batteryLevel; batterySegments++)
-  // {
   display.fillRect(155, 169, batteryLevel, 15, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
-  // }
 }
 
 void Watchy7SEG::drawFiel()
@@ -617,7 +535,6 @@ void Watchy7SEG::drawMoon()
 
   // Waxing: 0-180
   // Waning: 180-360
-  // display.setCursor(100, 74);
 
   if (ag <= 180)
   {
@@ -653,20 +570,6 @@ void Watchy7SEG::drawMoon()
     else
       display.drawBitmap(131, 74, luna7, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
   }
-
-  // display.print(year);
-  // // display.print(moon.angle);
-  // display.setCursor(100, 100);
-  // // display.print(moon.percentLit);
-  // display.print(month);
-
-  // display.setCursor(100, 130);
-  // display.print(day);
-  //  Serial.print( "Moon phase angle: " );
-  //  Serial.print( moon.angle );             // angle is a integer between 0-360
-  //  Serial.println( " degrees." );
-  //  Serial.print( "Moon surface lit: " );
-  //  Serial.println( moon.percentLit * 100 );  // percentLit is a real between 0-1
 }
 
 void Watchy7SEG::drawSun()
@@ -878,85 +781,3 @@ void Watchy7SEG::drawSun()
   else if (h == 9)
     display.drawBitmap(132, 137, num_9, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
 }
-
-// void Watchy7SEG::drawWeather()
-//{
-//
-//     weatherData currentWeather = getWeatherData();
-//
-//     int8_t temperature = currentWeather.temperature;
-//     int16_t weatherConditionCode = currentWeather.weatherConditionCode;
-//
-//     display.setFont(&DSEG7_Classic_Regular_39);
-//     int16_t  x1, y1;
-//     uint16_t w, h;
-//     display.getTextBounds(String(temperature), 0, 0, &x1, &y1, &w, &h);
-//     if(159 - w - x1 > 87)
-//     {
-//         display.setCursor(159 - w - x1, 150);
-//     }
-//     else
-//     {
-//         display.setFont(&DSEG7_Classic_Bold_25);
-//         display.getTextBounds(String(temperature), 0, 0, &x1, &y1, &w, &h);
-//         display.setCursor(159 - w - x1, 136);
-//     }
-//     display.println(temperature);
-//     display.drawBitmap(165, 110, currentWeather.isMetric ? celsius : fahrenheit, 26, 20, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
-//     const unsigned char* weatherIcon;
-//
-//     //https://openweathermap.org/weather-conditions
-//     if(weatherConditionCode > 801)
-//     {
-//         //Cloudy
-//         weatherIcon = cloudy;
-//     }
-//     else if(weatherConditionCode == 801)
-//     {
-//         //Few Clouds
-//         weatherIcon = cloudsun;
-//     }
-//     else if(weatherConditionCode == 800)
-//     {
-//         //Clear
-//         weatherIcon = sunny;
-//     }
-//     else if(weatherConditionCode >=700)
-//     {
-//         //Atmosphere
-//         weatherIcon = atmosphere;
-//     }
-//     else if(weatherConditionCode >=600)
-//     {
-//         //Snow
-//         weatherIcon = snow;
-//     }
-//     else if(weatherConditionCode >=500)
-//     {
-//         //Rain
-//         weatherIcon = rain;
-//     }
-//     else if(weatherConditionCode >=300)
-//     {
-//         //Drizzle
-//         weatherIcon = drizzle;
-//     }
-//     else if(weatherConditionCode >=200)
-//     {
-//         //Thunderstorm
-//         weatherIcon = thunderstorm;
-//     }
-//     else
-//         return;
-//     display.drawBitmap(145, 158, weatherIcon, WEATHER_ICON_WIDTH, WEATHER_ICON_HEIGHT, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
-// }
-
-// void Watchy7SEG::drawEva()
-// {
-//     display.drawBitmap(105, 100, eva, 100, 100, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
-// }
-
-// void Watchy7SEG::drawLine()
-// {
-//     display.drawBitmap(100, 72, line, 1, 77, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
-// }

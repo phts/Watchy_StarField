@@ -19,10 +19,7 @@ public:
   void drawTime();
   void drawDate();
   void drawSteps();
-  //        void drawWeather();
-  //        void drawEva();
   void drawBattery();
-  //        void drawLine();
   void drawFiel();
   void drawMoon();
 
