@@ -1,7 +1,7 @@
-#include "Watchy_7_SEG.h"
+#include "WatchyStarField.h"
 #include "settings.h"
 
-Watchy7SEG watchy(settings);
+WatchyStarField watchy(settings);
 
 void setup()
 {
