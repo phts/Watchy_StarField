@@ -10,25 +10,24 @@
 #include "DSEG7_Classic_Regular_39.h"
 #include "icons.h"
 
-class Watchy7SEG : public Watchy{
-    using Watchy::Watchy;
-    public:
-        void drawWatchFace();
-        void drawTime();
-        void drawDate();
-        void drawSteps();
-//        void drawWeather();
-//        void drawEva();
-        void drawBattery();
-//        void drawLine();
-        void drawFiel();
-        void drawMoon();
+class Watchy7SEG : public Watchy
+{
+  using Watchy::Watchy;
 
-        void drawSun();
-        virtual void handleButtonPress();
+public:
+  void drawWatchFace();
+  void drawTime();
+  void drawDate();
+  void drawSteps();
+  //        void drawWeather();
+  //        void drawEva();
+  void drawBattery();
+  //        void drawLine();
+  void drawFiel();
+  void drawMoon();
 
-
-
+  void drawSun();
+  virtual void handleButtonPress();
 };
 
 #endif

@@ -14,12 +14,12 @@
 struct moonData_t
 {
   int32_t angle;
-  double  percentLit;
+  double percentLit;
 };
 
 class moonPhaser
 {
 public:
-  moonData_t getPhase( const int32_t &year, const int32_t &month, const int32_t &day, const double &hour );
+  moonData_t getPhase(const int32_t &year, const int32_t &month, const int32_t &day, const double &hour);
 };
 #endif

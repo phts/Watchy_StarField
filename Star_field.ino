@@ -3,10 +3,9 @@
 
 Watchy7SEG watchy(settings);
 
-
-void setup(){
-    watchy.init();
-
+void setup()
+{
+  watchy.init();
 }
 
-void loop(){}
+void loop() {}
