@@ -1,8 +1,14 @@
-#include "WatchyStarField.h"
+#include <math.h>
 
-// change it to your location
-//          latitude, longitude, timezone
-#define LOC 31.00, 121.00, 8
+#include "WatchyStarField.h"
+#include "settings.h"
+#include "Dusk2Dawn.h"
+#include "moonPhaser.h"
+#include "Seven_Segment10pt7b.h"
+#include "DSEG7_Classic_Regular_15.h"
+#include "DSEG7_Classic_Bold_25.h"
+#include "DSEG7_Classic_Regular_39.h"
+#include "icons.h"
 
 RTC_DATA_ATTR bool DARKMODE = false;
 RTC_DATA_ATTR bool HOUR_SET = true;
@@ -574,7 +580,7 @@ void WatchyStarField::drawMoon()
 
 void WatchyStarField::drawSun()
 {
-  Dusk2Dawn location(LOC);
+  Dusk2Dawn location(SETTINGS_LOCATION, SETTINGS_TIMEZONE);
   int year = currentTime.Year + 1970;
   int32_t month = currentTime.Month;
   int32_t day = currentTime.Day;

@@ -1,14 +1,6 @@
 #ifndef WATCHY_STAR_FIELD_H
 #define WATCHY_STAR_FIELD_H
-#include <math.h>
 #include <Watchy.h>
-#include "Dusk2Dawn.h"
-#include "moonPhaser.h"
-#include "Seven_Segment10pt7b.h"
-#include "DSEG7_Classic_Regular_15.h"
-#include "DSEG7_Classic_Bold_25.h"
-#include "DSEG7_Classic_Regular_39.h"
-#include "icons.h"
 
 class WatchyStarField : public Watchy
 {

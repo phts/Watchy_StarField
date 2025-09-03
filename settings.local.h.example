@@ -1,0 +1,10 @@
+#ifndef SETTIGNS_LOCAL_H
+#define SETTIGNS_LOCAL_H
+
+#define SETTINGS_TIMEZONE 2
+#define SETTINGS_VIBRATE_O_CLOCK true
+
+// To determine dusk/dawn times: latitude, longitude
+#define SETTINGS_LOCATION 31.00, 121.00
+
+#endif
