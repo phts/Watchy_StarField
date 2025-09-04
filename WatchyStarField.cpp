@@ -58,7 +58,7 @@ void WatchyStarField::drawWatchFace()
 {
   display.fillScreen(DARKMODE ? GxEPD_BLACK : GxEPD_WHITE);
   display.setTextColor(DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
-  drawFiel();
+  drawField();
   drawTime();
   drawDate();
   drawSteps();
@@ -519,7 +519,7 @@ void WatchyStarField::drawBattery()
   display.fillRect(155, 169, batteryLevel, 15, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
 }
 
-void WatchyStarField::drawFiel()
+void WatchyStarField::drawField()
 {
   display.drawBitmap(0, 0, field, 200, 200, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
 }

@@ -12,7 +12,7 @@ public:
   void drawDate();
   void drawSteps();
   void drawBattery();
-  void drawFiel();
+  void drawField();
   void drawMoon();
 
   void drawSun();
