@@ -520,39 +520,40 @@ void WatchyStarField::drawMoon()
   // Waxing: 0-180
   // Waning: 180-360
 
+  display.drawBitmap(130, 73, luna_bg, 64, 64, GxEPD_BLACK);
   if (ag <= 180)
   {
     if (lt < 0.1)
-      display.drawBitmap(131, 74, luna1, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+      display.drawBitmap(131, 74, luna1, 61, 61, GxEPD_WHITE);
     else if (lt < 0.25)
-      display.drawBitmap(131, 74, luna12, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+      display.drawBitmap(131, 74, luna12, 61, 61, GxEPD_WHITE);
     else if (lt < 0.4)
-      display.drawBitmap(131, 74, luna11, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+      display.drawBitmap(131, 74, luna11, 61, 61, GxEPD_WHITE);
     else if (lt < 0.6)
-      display.drawBitmap(131, 74, luna10, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+      display.drawBitmap(131, 74, luna10, 61, 61, GxEPD_WHITE);
     else if (lt < 0.75)
-      display.drawBitmap(131, 74, luna9, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+      display.drawBitmap(131, 74, luna9, 61, 61, GxEPD_WHITE);
     else if (lt < 0.9)
-      display.drawBitmap(131, 74, luna8, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+      display.drawBitmap(131, 74, luna8, 61, 61, GxEPD_WHITE);
     else
-      display.drawBitmap(131, 74, luna7, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+      display.drawBitmap(131, 74, luna7, 61, 61, GxEPD_WHITE);
   }
   else
   {
     if (lt < 0.1)
-      display.drawBitmap(131, 74, luna1, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+      display.drawBitmap(131, 74, luna1, 61, 61, GxEPD_WHITE);
     else if (lt < 0.25)
-      display.drawBitmap(131, 74, luna2, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+      display.drawBitmap(131, 74, luna2, 61, 61, GxEPD_WHITE);
     else if (lt < 0.4)
-      display.drawBitmap(131, 74, luna3, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+      display.drawBitmap(131, 74, luna3, 61, 61, GxEPD_WHITE);
     else if (lt < 0.6)
-      display.drawBitmap(131, 74, luna4, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+      display.drawBitmap(131, 74, luna4, 61, 61, GxEPD_WHITE);
     else if (lt < 0.75)
-      display.drawBitmap(131, 74, luna5, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+      display.drawBitmap(131, 74, luna5, 61, 61, GxEPD_WHITE);
     else if (lt < 0.9)
-      display.drawBitmap(131, 74, luna6, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+      display.drawBitmap(131, 74, luna6, 61, 61, GxEPD_WHITE);
     else
-      display.drawBitmap(131, 74, luna7, 61, 61, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+      display.drawBitmap(131, 74, luna7, 61, 61, GxEPD_WHITE);
   }
 }
 
