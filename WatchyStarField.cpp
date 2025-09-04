@@ -20,38 +20,16 @@ void WatchyStarField::handleButtonPress()
   if (guiState == WATCHFACE_STATE)
   {
     uint64_t wakeupBit = esp_sleep_get_ext1_wakeup_status();
-    if (wakeupBit & UP_BTN_MASK)
-    {
-      HOUR_SET = !HOUR_SET;
-      RTC.read(currentTime);
-      showWatchFace(true);
-      return;
-    }
     if (wakeupBit & DOWN_BTN_MASK)
     {
-      HOUR_SET = !HOUR_SET;
       RTC.read(currentTime);
-      showWatchFace(true);
-      return;
-    }
-    if (wakeupBit & BACK_BTN_MASK)
-    {
-      DARKMODE = !DARKMODE;
-      RTC.read(currentTime);
-      showWatchFace(true);
-      return;
-    }
-    if (wakeupBit & MENU_BTN_MASK)
-    {
-      Watchy::handleButtonPress();
+      Watchy::vibMotor(300, (currentTime.Hour > (uint8_t)12 ? currentTime.Hour - (uint8_t)12 : currentTime.Hour) * 2);
+      delay(700);
+      Watchy::vibMotor(200, (currentTime.Minute / (uint8_t)10) * 2);
       return;
     }
   }
-  else
-  {
-    Watchy::handleButtonPress();
-  }
-  return;
+  Watchy::handleButtonPress();
 }
 
 void WatchyStarField::drawWatchFace()

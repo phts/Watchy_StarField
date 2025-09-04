@@ -16,7 +16,7 @@ public:
   void drawMoon();
 
   void drawSun();
-  virtual void handleButtonPress();
+  void handleButtonPress() override;
 };
 
 #endif
