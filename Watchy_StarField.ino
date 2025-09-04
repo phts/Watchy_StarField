@@ -15,6 +15,7 @@ watchySettings settings{
     .ntpServer = "pool.ntp.org",
     .gmtOffset = 3600 * SETTINGS_TIMEZONE,
     .vibrateOClock = SETTINGS_VIBRATE_O_CLOCK,
+    .lightUI = true,
 };
 
 WatchyStarField watchy(settings);
