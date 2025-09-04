@@ -456,40 +456,40 @@ void WatchyStarField::drawBattery()
 {
   int8_t batteryLevel = 0;
   float VBAT = getBatteryVoltage();
-  if (VBAT > 4.1)
+
+  if (VBAT > 4.0)
   {
     batteryLevel = 37;
   }
-  else if (VBAT > 4.05 && VBAT <= 4.1)
+  else if (VBAT > 3.9 && VBAT <= 4.0)
   {
     batteryLevel = 33;
   }
-  else if (VBAT > 4 && VBAT <= 4.05)
+  else if (VBAT > 3.7 && VBAT <= 3.9)
   {
     batteryLevel = 28;
   }
-
-  else if (VBAT > 3.95 && VBAT <= 4)
+  else if (VBAT > 3.6 && VBAT <= 3.7)
   {
     batteryLevel = 23;
   }
-  else if (VBAT > 3.9 && VBAT <= 3.95)
+  else if (VBAT > 3.5 && VBAT <= 3.6)
   {
     batteryLevel = 18;
   }
-  else if (VBAT > 3.85 && VBAT <= 3.9)
+  else if (VBAT > 3.4 && VBAT <= 3.5)
   {
     batteryLevel = 13;
   }
-  else if (VBAT > 3.8 && VBAT <= 3.85)
+  else if (VBAT > 3.3 && VBAT <= 3.4)
   {
     batteryLevel = 8;
   }
-  else if (VBAT > 3.75 && VBAT <= 3.8)
+  else if (VBAT > 3.2 && VBAT <= 3.3)
   {
     batteryLevel = 4;
   }
-  else if (VBAT <= 3.75)
+  else if (VBAT <= 3.2)
   {
     batteryLevel = 0;
   }
