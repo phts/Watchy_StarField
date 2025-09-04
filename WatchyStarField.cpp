@@ -10,7 +10,6 @@
 #include "DSEG7_Classic_Regular_39.h"
 #include "icons.h"
 
-RTC_DATA_ATTR bool DARKMODE = false;
 RTC_DATA_ATTR bool HOUR_SET = true;
 
 moonPhaser moonP;
@@ -34,15 +33,15 @@ void WatchyStarField::handleButtonPress()
 
 void WatchyStarField::drawWatchFace()
 {
-  display.fillScreen(DARKMODE ? GxEPD_BLACK : GxEPD_WHITE);
-  display.setTextColor(DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+  display.fillScreen(UI_COLOR_BACKGROUND);
+  display.setTextColor(UI_COLOR_FOREGROUND);
   drawField();
   drawTime();
   drawDate();
   drawSteps();
   drawBattery();
 
-  display.drawBitmap(118, 168, WIFI_CONFIGURED ? wifi : wifioff, 25, 18, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+  display.drawBitmap(118, 168, WIFI_CONFIGURED ? wifi : wifioff, 25, 18, UI_COLOR_FOREGROUND);
   drawMoon();
   drawSun();
 }
@@ -56,13 +55,13 @@ void WatchyStarField::drawTime()
 
   if (HOUR_SET == false && sh >= 12)
   {
-    display.fillRect(7, 60, 25, 9, DARKMODE ? GxEPD_BLACK : GxEPD_WHITE);
-    display.drawBitmap(7, 60, pm, 25, 9, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.fillRect(7, 60, 25, 9, UI_COLOR_BACKGROUND);
+    display.drawBitmap(7, 60, pm, 25, 9, UI_COLOR_FOREGROUND);
   }
   else if (HOUR_SET == false && sh < 12)
   {
-    display.fillRect(7, 60, 25, 9, DARKMODE ? GxEPD_BLACK : GxEPD_WHITE);
-    display.drawBitmap(7, 60, am, 25, 9, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.fillRect(7, 60, 25, 9, UI_COLOR_BACKGROUND);
+    display.drawBitmap(7, 60, am, 25, 9, UI_COLOR_FOREGROUND);
   }
 
   if (HOUR_SET == false && sh > 12)
@@ -76,88 +75,88 @@ void WatchyStarField::drawTime()
   int d = sm % 10;
 
   if (a == 0)
-    display.drawBitmap(11, 5, fd_0, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(11, 5, fd_0, 33, 53, UI_COLOR_FOREGROUND);
   else if (a == 1)
-    display.drawBitmap(11, 5, fd_1, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(11, 5, fd_1, 33, 53, UI_COLOR_FOREGROUND);
   else if (a == 2)
-    display.drawBitmap(11, 5, fd_2, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(11, 5, fd_2, 33, 53, UI_COLOR_FOREGROUND);
   else if (a == 3)
-    display.drawBitmap(11, 5, fd_3, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(11, 5, fd_3, 33, 53, UI_COLOR_FOREGROUND);
   else if (a == 4)
-    display.drawBitmap(11, 5, fd_4, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(11, 5, fd_4, 33, 53, UI_COLOR_FOREGROUND);
   else if (a == 5)
-    display.drawBitmap(11, 5, fd_5, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(11, 5, fd_5, 33, 53, UI_COLOR_FOREGROUND);
   else if (a == 6)
-    display.drawBitmap(11, 5, fd_6, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(11, 5, fd_6, 33, 53, UI_COLOR_FOREGROUND);
   else if (a == 7)
-    display.drawBitmap(11, 5, fd_7, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(11, 5, fd_7, 33, 53, UI_COLOR_FOREGROUND);
   else if (a == 8)
-    display.drawBitmap(11, 5, fd_8, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(11, 5, fd_8, 33, 53, UI_COLOR_FOREGROUND);
   else if (a == 9)
-    display.drawBitmap(11, 5, fd_9, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(11, 5, fd_9, 33, 53, UI_COLOR_FOREGROUND);
 
   if (b == 0)
-    display.drawBitmap(55, 5, fd_0, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(55, 5, fd_0, 33, 53, UI_COLOR_FOREGROUND);
   else if (b == 1)
-    display.drawBitmap(55, 5, fd_1, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(55, 5, fd_1, 33, 53, UI_COLOR_FOREGROUND);
   else if (b == 2)
-    display.drawBitmap(55, 5, fd_2, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(55, 5, fd_2, 33, 53, UI_COLOR_FOREGROUND);
   else if (b == 3)
-    display.drawBitmap(55, 5, fd_3, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(55, 5, fd_3, 33, 53, UI_COLOR_FOREGROUND);
   else if (b == 4)
-    display.drawBitmap(55, 5, fd_4, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(55, 5, fd_4, 33, 53, UI_COLOR_FOREGROUND);
   else if (b == 5)
-    display.drawBitmap(55, 5, fd_5, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(55, 5, fd_5, 33, 53, UI_COLOR_FOREGROUND);
   else if (b == 6)
-    display.drawBitmap(55, 5, fd_6, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(55, 5, fd_6, 33, 53, UI_COLOR_FOREGROUND);
   else if (b == 7)
-    display.drawBitmap(55, 5, fd_7, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(55, 5, fd_7, 33, 53, UI_COLOR_FOREGROUND);
   else if (b == 8)
-    display.drawBitmap(55, 5, fd_8, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(55, 5, fd_8, 33, 53, UI_COLOR_FOREGROUND);
   else if (b == 9)
-    display.drawBitmap(55, 5, fd_9, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(55, 5, fd_9, 33, 53, UI_COLOR_FOREGROUND);
 
   if (c == 0)
-    display.drawBitmap(111, 5, fd_0, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(111, 5, fd_0, 33, 53, UI_COLOR_FOREGROUND);
   else if (c == 1)
-    display.drawBitmap(111, 5, fd_1, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(111, 5, fd_1, 33, 53, UI_COLOR_FOREGROUND);
   else if (c == 2)
-    display.drawBitmap(111, 5, fd_2, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(111, 5, fd_2, 33, 53, UI_COLOR_FOREGROUND);
   else if (c == 3)
-    display.drawBitmap(111, 5, fd_3, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(111, 5, fd_3, 33, 53, UI_COLOR_FOREGROUND);
   else if (c == 4)
-    display.drawBitmap(111, 5, fd_4, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(111, 5, fd_4, 33, 53, UI_COLOR_FOREGROUND);
   else if (c == 5)
-    display.drawBitmap(111, 5, fd_5, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(111, 5, fd_5, 33, 53, UI_COLOR_FOREGROUND);
   else if (c == 6)
-    display.drawBitmap(111, 5, fd_6, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(111, 5, fd_6, 33, 53, UI_COLOR_FOREGROUND);
   else if (c == 7)
-    display.drawBitmap(111, 5, fd_7, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(111, 5, fd_7, 33, 53, UI_COLOR_FOREGROUND);
   else if (c == 8)
-    display.drawBitmap(111, 5, fd_8, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(111, 5, fd_8, 33, 53, UI_COLOR_FOREGROUND);
   else if (c == 9)
-    display.drawBitmap(111, 5, fd_9, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(111, 5, fd_9, 33, 53, UI_COLOR_FOREGROUND);
 
   if (d == 0)
-    display.drawBitmap(155, 5, fd_0, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(155, 5, fd_0, 33, 53, UI_COLOR_FOREGROUND);
   else if (d == 1)
-    display.drawBitmap(155, 5, fd_1, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(155, 5, fd_1, 33, 53, UI_COLOR_FOREGROUND);
   else if (d == 2)
-    display.drawBitmap(155, 5, fd_2, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(155, 5, fd_2, 33, 53, UI_COLOR_FOREGROUND);
   else if (d == 3)
-    display.drawBitmap(155, 5, fd_3, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(155, 5, fd_3, 33, 53, UI_COLOR_FOREGROUND);
   else if (d == 4)
-    display.drawBitmap(155, 5, fd_4, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(155, 5, fd_4, 33, 53, UI_COLOR_FOREGROUND);
   else if (d == 5)
-    display.drawBitmap(155, 5, fd_5, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(155, 5, fd_5, 33, 53, UI_COLOR_FOREGROUND);
   else if (d == 6)
-    display.drawBitmap(155, 5, fd_6, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(155, 5, fd_6, 33, 53, UI_COLOR_FOREGROUND);
   else if (d == 7)
-    display.drawBitmap(155, 5, fd_7, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(155, 5, fd_7, 33, 53, UI_COLOR_FOREGROUND);
   else if (d == 8)
-    display.drawBitmap(155, 5, fd_8, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(155, 5, fd_8, 33, 53, UI_COLOR_FOREGROUND);
   else if (d == 9)
-    display.drawBitmap(155, 5, fd_9, 33, 53, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(155, 5, fd_9, 33, 53, UI_COLOR_FOREGROUND);
 }
 
 void WatchyStarField::drawDate()
@@ -196,130 +195,130 @@ void WatchyStarField::drawDate()
   int f = ye;
 
   if (a == 0)
-    display.drawBitmap(8, 95, dd_0, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 95, dd_0, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 1)
-    display.drawBitmap(8, 95, dd_1, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 95, dd_1, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 2)
-    display.drawBitmap(8, 95, dd_2, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 95, dd_2, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 3)
-    display.drawBitmap(8, 95, dd_3, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 95, dd_3, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 4)
-    display.drawBitmap(8, 95, dd_4, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 95, dd_4, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 5)
-    display.drawBitmap(8, 95, dd_5, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 95, dd_5, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 6)
-    display.drawBitmap(8, 95, dd_6, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 95, dd_6, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 7)
-    display.drawBitmap(8, 95, dd_7, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 95, dd_7, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 8)
-    display.drawBitmap(8, 95, dd_8, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 95, dd_8, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 9)
-    display.drawBitmap(8, 95, dd_9, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 95, dd_9, 16, 25, UI_COLOR_FOREGROUND);
 
   if (b == 0)
-    display.drawBitmap(29, 95, dd_0, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 95, dd_0, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 1)
-    display.drawBitmap(29, 95, dd_1, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 95, dd_1, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 2)
-    display.drawBitmap(29, 95, dd_2, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 95, dd_2, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 3)
-    display.drawBitmap(29, 95, dd_3, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 95, dd_3, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 4)
-    display.drawBitmap(29, 95, dd_4, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 95, dd_4, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 5)
-    display.drawBitmap(29, 95, dd_5, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 95, dd_5, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 6)
-    display.drawBitmap(29, 95, dd_6, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 95, dd_6, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 7)
-    display.drawBitmap(29, 95, dd_7, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 95, dd_7, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 8)
-    display.drawBitmap(29, 95, dd_8, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 95, dd_8, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 9)
-    display.drawBitmap(29, 95, dd_9, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 95, dd_9, 16, 25, UI_COLOR_FOREGROUND);
 
   if (c == 0)
-    display.drawBitmap(8, 129, dd_0, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 129, dd_0, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 1)
-    display.drawBitmap(8, 129, dd_1, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 129, dd_1, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 2)
-    display.drawBitmap(8, 129, dd_2, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 129, dd_2, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 3)
-    display.drawBitmap(8, 129, dd_3, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 129, dd_3, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 4)
-    display.drawBitmap(8, 129, dd_4, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 129, dd_4, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 5)
-    display.drawBitmap(8, 129, dd_5, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 129, dd_5, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 6)
-    display.drawBitmap(8, 129, dd_6, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 129, dd_6, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 7)
-    display.drawBitmap(8, 129, dd_7, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 129, dd_7, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 8)
-    display.drawBitmap(8, 129, dd_8, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 129, dd_8, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 9)
-    display.drawBitmap(8, 129, dd_9, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 129, dd_9, 16, 25, UI_COLOR_FOREGROUND);
 
   if (d == 0)
-    display.drawBitmap(29, 129, dd_0, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 129, dd_0, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 1)
-    display.drawBitmap(29, 129, dd_1, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 129, dd_1, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 2)
-    display.drawBitmap(29, 129, dd_2, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 129, dd_2, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 3)
-    display.drawBitmap(29, 129, dd_3, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 129, dd_3, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 4)
-    display.drawBitmap(29, 129, dd_4, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 129, dd_4, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 5)
-    display.drawBitmap(29, 129, dd_5, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 129, dd_5, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 6)
-    display.drawBitmap(29, 129, dd_6, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 129, dd_6, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 7)
-    display.drawBitmap(29, 129, dd_7, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 129, dd_7, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 8)
-    display.drawBitmap(29, 129, dd_8, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 129, dd_8, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 9)
-    display.drawBitmap(29, 129, dd_9, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 129, dd_9, 16, 25, UI_COLOR_FOREGROUND);
 
   if (e == 0)
-    display.drawBitmap(50, 129, dd_0, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 129, dd_0, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 1)
-    display.drawBitmap(50, 129, dd_1, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 129, dd_1, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 2)
-    display.drawBitmap(50, 129, dd_2, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 129, dd_2, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 3)
-    display.drawBitmap(50, 129, dd_3, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 129, dd_3, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 4)
-    display.drawBitmap(50, 129, dd_4, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 129, dd_4, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 5)
-    display.drawBitmap(50, 129, dd_5, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 129, dd_5, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 6)
-    display.drawBitmap(50, 129, dd_6, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 129, dd_6, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 7)
-    display.drawBitmap(50, 129, dd_7, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 129, dd_7, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 8)
-    display.drawBitmap(50, 129, dd_8, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 129, dd_8, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 9)
-    display.drawBitmap(50, 129, dd_9, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 129, dd_9, 16, 25, UI_COLOR_FOREGROUND);
 
   if (f == 0)
-    display.drawBitmap(71, 129, dd_0, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 129, dd_0, 16, 25, UI_COLOR_FOREGROUND);
   else if (f == 1)
-    display.drawBitmap(71, 129, dd_1, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 129, dd_1, 16, 25, UI_COLOR_FOREGROUND);
   else if (f == 2)
-    display.drawBitmap(71, 129, dd_2, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 129, dd_2, 16, 25, UI_COLOR_FOREGROUND);
   else if (f == 3)
-    display.drawBitmap(71, 129, dd_3, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 129, dd_3, 16, 25, UI_COLOR_FOREGROUND);
   else if (f == 4)
-    display.drawBitmap(71, 129, dd_4, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 129, dd_4, 16, 25, UI_COLOR_FOREGROUND);
   else if (f == 5)
-    display.drawBitmap(71, 129, dd_5, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 129, dd_5, 16, 25, UI_COLOR_FOREGROUND);
   else if (f == 6)
-    display.drawBitmap(71, 129, dd_6, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 129, dd_6, 16, 25, UI_COLOR_FOREGROUND);
   else if (f == 7)
-    display.drawBitmap(71, 129, dd_7, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 129, dd_7, 16, 25, UI_COLOR_FOREGROUND);
   else if (f == 8)
-    display.drawBitmap(71, 129, dd_8, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 129, dd_8, 16, 25, UI_COLOR_FOREGROUND);
   else if (f == 9)
-    display.drawBitmap(71, 129, dd_9, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 129, dd_9, 16, 25, UI_COLOR_FOREGROUND);
 }
 void WatchyStarField::drawSteps()
 {
@@ -336,7 +335,7 @@ void WatchyStarField::drawSteps()
     l5 = 61;
   }
 
-  display.fillRect(131, 148, l5, 9, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+  display.fillRect(131, 148, l5, 9, UI_COLOR_FOREGROUND);
 
   int a = stepCount / 10000;
   stepCount = stepCount % 10000;
@@ -348,109 +347,109 @@ void WatchyStarField::drawSteps()
   int e = stepCount % 10;
 
   if (a == 0)
-    display.drawBitmap(8, 165, dd_0, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 165, dd_0, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 1)
-    display.drawBitmap(8, 165, dd_1, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 165, dd_1, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 2)
-    display.drawBitmap(8, 165, dd_2, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 165, dd_2, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 3)
-    display.drawBitmap(8, 165, dd_3, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 165, dd_3, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 4)
-    display.drawBitmap(8, 165, dd_4, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 165, dd_4, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 5)
-    display.drawBitmap(8, 165, dd_5, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 165, dd_5, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 6)
-    display.drawBitmap(8, 165, dd_6, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 165, dd_6, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 7)
-    display.drawBitmap(8, 165, dd_7, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 165, dd_7, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 8)
-    display.drawBitmap(8, 165, dd_8, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 165, dd_8, 16, 25, UI_COLOR_FOREGROUND);
   else if (a == 9)
-    display.drawBitmap(8, 165, dd_9, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(8, 165, dd_9, 16, 25, UI_COLOR_FOREGROUND);
 
   if (b == 0)
-    display.drawBitmap(29, 165, dd_0, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 165, dd_0, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 1)
-    display.drawBitmap(29, 165, dd_1, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 165, dd_1, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 2)
-    display.drawBitmap(29, 165, dd_2, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 165, dd_2, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 3)
-    display.drawBitmap(29, 165, dd_3, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 165, dd_3, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 4)
-    display.drawBitmap(29, 165, dd_4, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 165, dd_4, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 5)
-    display.drawBitmap(29, 165, dd_5, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 165, dd_5, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 6)
-    display.drawBitmap(29, 165, dd_6, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 165, dd_6, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 7)
-    display.drawBitmap(29, 165, dd_7, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 165, dd_7, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 8)
-    display.drawBitmap(29, 165, dd_8, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 165, dd_8, 16, 25, UI_COLOR_FOREGROUND);
   else if (b == 9)
-    display.drawBitmap(29, 165, dd_9, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(29, 165, dd_9, 16, 25, UI_COLOR_FOREGROUND);
 
   if (c == 0)
-    display.drawBitmap(50, 165, dd_0, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 165, dd_0, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 1)
-    display.drawBitmap(50, 165, dd_1, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 165, dd_1, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 2)
-    display.drawBitmap(50, 165, dd_2, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 165, dd_2, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 3)
-    display.drawBitmap(50, 165, dd_3, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 165, dd_3, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 4)
-    display.drawBitmap(50, 165, dd_4, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 165, dd_4, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 5)
-    display.drawBitmap(50, 165, dd_5, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 165, dd_5, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 6)
-    display.drawBitmap(50, 165, dd_6, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 165, dd_6, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 7)
-    display.drawBitmap(50, 165, dd_7, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 165, dd_7, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 8)
-    display.drawBitmap(50, 165, dd_8, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 165, dd_8, 16, 25, UI_COLOR_FOREGROUND);
   else if (c == 9)
-    display.drawBitmap(50, 165, dd_9, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(50, 165, dd_9, 16, 25, UI_COLOR_FOREGROUND);
 
   if (d == 0)
-    display.drawBitmap(71, 165, dd_0, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 165, dd_0, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 1)
-    display.drawBitmap(71, 165, dd_1, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 165, dd_1, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 2)
-    display.drawBitmap(71, 165, dd_2, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 165, dd_2, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 3)
-    display.drawBitmap(71, 165, dd_3, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 165, dd_3, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 4)
-    display.drawBitmap(71, 165, dd_4, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 165, dd_4, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 5)
-    display.drawBitmap(71, 165, dd_5, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 165, dd_5, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 6)
-    display.drawBitmap(71, 165, dd_6, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 165, dd_6, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 7)
-    display.drawBitmap(71, 165, dd_7, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 165, dd_7, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 8)
-    display.drawBitmap(71, 165, dd_8, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 165, dd_8, 16, 25, UI_COLOR_FOREGROUND);
   else if (d == 9)
-    display.drawBitmap(71, 165, dd_9, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(71, 165, dd_9, 16, 25, UI_COLOR_FOREGROUND);
 
   if (e == 0)
-    display.drawBitmap(92, 165, dd_0, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(92, 165, dd_0, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 1)
-    display.drawBitmap(92, 165, dd_1, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(92, 165, dd_1, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 2)
-    display.drawBitmap(92, 165, dd_2, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(92, 165, dd_2, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 3)
-    display.drawBitmap(92, 165, dd_3, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(92, 165, dd_3, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 4)
-    display.drawBitmap(92, 165, dd_4, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(92, 165, dd_4, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 5)
-    display.drawBitmap(92, 165, dd_5, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(92, 165, dd_5, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 6)
-    display.drawBitmap(92, 165, dd_6, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(92, 165, dd_6, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 7)
-    display.drawBitmap(92, 165, dd_7, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(92, 165, dd_7, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 8)
-    display.drawBitmap(92, 165, dd_8, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(92, 165, dd_8, 16, 25, UI_COLOR_FOREGROUND);
   else if (e == 9)
-    display.drawBitmap(92, 165, dd_9, 16, 25, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(92, 165, dd_9, 16, 25, UI_COLOR_FOREGROUND);
 }
 void WatchyStarField::drawBattery()
 {
@@ -494,12 +493,12 @@ void WatchyStarField::drawBattery()
     batteryLevel = 0;
   }
 
-  display.fillRect(155, 169, batteryLevel, 15, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+  display.fillRect(155, 169, batteryLevel, 15, UI_COLOR_FOREGROUND);
 }
 
 void WatchyStarField::drawField()
 {
-  display.drawBitmap(0, 0, field, 200, 200, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+  display.drawBitmap(0, 0, field, 200, 200, UI_COLOR_FOREGROUND);
 }
 
 void WatchyStarField::drawMoon()
@@ -572,7 +571,7 @@ void WatchyStarField::drawSun()
     tk = 60;
   else if (k < sr)
     tk = 0;
-  display.drawBitmap(110, 132 - tk, arr, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+  display.drawBitmap(110, 132 - tk, arr, 3, 5, UI_COLOR_FOREGROUND);
 
   int rh = sr / 60;
   int rm = sr % 60;
@@ -599,170 +598,170 @@ void WatchyStarField::drawSun()
   int h = rm % 10;
 
   if (a == 0)
-    display.drawBitmap(116, 67, num_0, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 67, num_0, 3, 5, UI_COLOR_FOREGROUND);
   else if (a == 1)
-    display.drawBitmap(116, 67, num_1, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 67, num_1, 3, 5, UI_COLOR_FOREGROUND);
   else if (a == 2)
-    display.drawBitmap(116, 67, num_2, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 67, num_2, 3, 5, UI_COLOR_FOREGROUND);
   else if (a == 3)
-    display.drawBitmap(116, 67, num_3, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 67, num_3, 3, 5, UI_COLOR_FOREGROUND);
   else if (a == 4)
-    display.drawBitmap(116, 67, num_4, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 67, num_4, 3, 5, UI_COLOR_FOREGROUND);
   else if (a == 5)
-    display.drawBitmap(116, 67, num_5, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 67, num_5, 3, 5, UI_COLOR_FOREGROUND);
   else if (a == 6)
-    display.drawBitmap(116, 67, num_6, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 67, num_6, 3, 5, UI_COLOR_FOREGROUND);
   else if (a == 7)
-    display.drawBitmap(116, 67, num_7, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 67, num_7, 3, 5, UI_COLOR_FOREGROUND);
   else if (a == 8)
-    display.drawBitmap(116, 67, num_8, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 67, num_8, 3, 5, UI_COLOR_FOREGROUND);
   else if (a == 9)
-    display.drawBitmap(116, 67, num_9, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 67, num_9, 3, 5, UI_COLOR_FOREGROUND);
 
   if (b == 0)
-    display.drawBitmap(120, 67, num_0, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 67, num_0, 3, 5, UI_COLOR_FOREGROUND);
   else if (b == 1)
-    display.drawBitmap(120, 67, num_1, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 67, num_1, 3, 5, UI_COLOR_FOREGROUND);
   else if (b == 2)
-    display.drawBitmap(120, 67, num_2, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 67, num_2, 3, 5, UI_COLOR_FOREGROUND);
   else if (b == 3)
-    display.drawBitmap(120, 67, num_3, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 67, num_3, 3, 5, UI_COLOR_FOREGROUND);
   else if (b == 4)
-    display.drawBitmap(120, 67, num_4, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 67, num_4, 3, 5, UI_COLOR_FOREGROUND);
   else if (b == 5)
-    display.drawBitmap(120, 67, num_5, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 67, num_5, 3, 5, UI_COLOR_FOREGROUND);
   else if (b == 6)
-    display.drawBitmap(120, 67, num_6, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 67, num_6, 3, 5, UI_COLOR_FOREGROUND);
   else if (b == 7)
-    display.drawBitmap(120, 67, num_7, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 67, num_7, 3, 5, UI_COLOR_FOREGROUND);
   else if (b == 8)
-    display.drawBitmap(120, 67, num_8, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 67, num_8, 3, 5, UI_COLOR_FOREGROUND);
   else if (b == 9)
-    display.drawBitmap(120, 67, num_9, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 67, num_9, 3, 5, UI_COLOR_FOREGROUND);
 
   if (c == 0)
-    display.drawBitmap(128, 67, num_0, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 67, num_0, 3, 5, UI_COLOR_FOREGROUND);
   else if (c == 1)
-    display.drawBitmap(128, 67, num_1, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 67, num_1, 3, 5, UI_COLOR_FOREGROUND);
   else if (c == 2)
-    display.drawBitmap(128, 67, num_2, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 67, num_2, 3, 5, UI_COLOR_FOREGROUND);
   else if (c == 3)
-    display.drawBitmap(128, 67, num_3, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 67, num_3, 3, 5, UI_COLOR_FOREGROUND);
   else if (c == 4)
-    display.drawBitmap(128, 67, num_4, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 67, num_4, 3, 5, UI_COLOR_FOREGROUND);
   else if (c == 5)
-    display.drawBitmap(128, 67, num_5, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 67, num_5, 3, 5, UI_COLOR_FOREGROUND);
   else if (c == 6)
-    display.drawBitmap(128, 67, num_6, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 67, num_6, 3, 5, UI_COLOR_FOREGROUND);
   else if (c == 7)
-    display.drawBitmap(128, 67, num_7, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 67, num_7, 3, 5, UI_COLOR_FOREGROUND);
   else if (c == 8)
-    display.drawBitmap(128, 67, num_8, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 67, num_8, 3, 5, UI_COLOR_FOREGROUND);
   else if (c == 9)
-    display.drawBitmap(128, 67, num_9, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 67, num_9, 3, 5, UI_COLOR_FOREGROUND);
 
   if (d == 0)
-    display.drawBitmap(132, 67, num_0, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 67, num_0, 3, 5, UI_COLOR_FOREGROUND);
   else if (d == 1)
-    display.drawBitmap(132, 67, num_1, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 67, num_1, 3, 5, UI_COLOR_FOREGROUND);
   else if (d == 2)
-    display.drawBitmap(132, 67, num_2, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 67, num_2, 3, 5, UI_COLOR_FOREGROUND);
   else if (d == 3)
-    display.drawBitmap(132, 67, num_3, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 67, num_3, 3, 5, UI_COLOR_FOREGROUND);
   else if (d == 4)
-    display.drawBitmap(132, 67, num_4, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 67, num_4, 3, 5, UI_COLOR_FOREGROUND);
   else if (d == 5)
-    display.drawBitmap(132, 67, num_5, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 67, num_5, 3, 5, UI_COLOR_FOREGROUND);
   else if (d == 6)
-    display.drawBitmap(132, 67, num_6, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 67, num_6, 3, 5, UI_COLOR_FOREGROUND);
   else if (d == 7)
-    display.drawBitmap(132, 67, num_7, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 67, num_7, 3, 5, UI_COLOR_FOREGROUND);
   else if (d == 8)
-    display.drawBitmap(132, 67, num_8, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 67, num_8, 3, 5, UI_COLOR_FOREGROUND);
   else if (d == 9)
-    display.drawBitmap(132, 67, num_9, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 67, num_9, 3, 5, UI_COLOR_FOREGROUND);
 
   if (e == 0)
-    display.drawBitmap(116, 137, num_0, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 137, num_0, 3, 5, UI_COLOR_FOREGROUND);
   else if (e == 1)
-    display.drawBitmap(116, 137, num_1, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 137, num_1, 3, 5, UI_COLOR_FOREGROUND);
   else if (e == 2)
-    display.drawBitmap(116, 137, num_2, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 137, num_2, 3, 5, UI_COLOR_FOREGROUND);
   else if (e == 3)
-    display.drawBitmap(116, 137, num_3, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 137, num_3, 3, 5, UI_COLOR_FOREGROUND);
   else if (e == 4)
-    display.drawBitmap(116, 137, num_4, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 137, num_4, 3, 5, UI_COLOR_FOREGROUND);
   else if (e == 5)
-    display.drawBitmap(116, 137, num_5, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 137, num_5, 3, 5, UI_COLOR_FOREGROUND);
   else if (e == 6)
-    display.drawBitmap(116, 137, num_6, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 137, num_6, 3, 5, UI_COLOR_FOREGROUND);
   else if (e == 7)
-    display.drawBitmap(116, 137, num_7, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 137, num_7, 3, 5, UI_COLOR_FOREGROUND);
   else if (e == 8)
-    display.drawBitmap(116, 137, num_8, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 137, num_8, 3, 5, UI_COLOR_FOREGROUND);
   else if (e == 9)
-    display.drawBitmap(116, 137, num_9, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(116, 137, num_9, 3, 5, UI_COLOR_FOREGROUND);
 
   if (f == 0)
-    display.drawBitmap(120, 137, num_0, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 137, num_0, 3, 5, UI_COLOR_FOREGROUND);
   else if (f == 1)
-    display.drawBitmap(120, 137, num_1, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 137, num_1, 3, 5, UI_COLOR_FOREGROUND);
   else if (f == 2)
-    display.drawBitmap(120, 137, num_2, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 137, num_2, 3, 5, UI_COLOR_FOREGROUND);
   else if (f == 3)
-    display.drawBitmap(120, 137, num_3, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 137, num_3, 3, 5, UI_COLOR_FOREGROUND);
   else if (f == 4)
-    display.drawBitmap(120, 137, num_4, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 137, num_4, 3, 5, UI_COLOR_FOREGROUND);
   else if (f == 5)
-    display.drawBitmap(120, 137, num_5, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 137, num_5, 3, 5, UI_COLOR_FOREGROUND);
   else if (f == 6)
-    display.drawBitmap(120, 137, num_6, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 137, num_6, 3, 5, UI_COLOR_FOREGROUND);
   else if (f == 7)
-    display.drawBitmap(120, 137, num_7, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 137, num_7, 3, 5, UI_COLOR_FOREGROUND);
   else if (f == 8)
-    display.drawBitmap(120, 137, num_8, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 137, num_8, 3, 5, UI_COLOR_FOREGROUND);
   else if (f == 9)
-    display.drawBitmap(120, 137, num_9, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(120, 137, num_9, 3, 5, UI_COLOR_FOREGROUND);
 
   if (g == 0)
-    display.drawBitmap(128, 137, num_0, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 137, num_0, 3, 5, UI_COLOR_FOREGROUND);
   else if (g == 1)
-    display.drawBitmap(128, 137, num_1, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 137, num_1, 3, 5, UI_COLOR_FOREGROUND);
   else if (g == 2)
-    display.drawBitmap(128, 137, num_2, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 137, num_2, 3, 5, UI_COLOR_FOREGROUND);
   else if (g == 3)
-    display.drawBitmap(128, 137, num_3, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 137, num_3, 3, 5, UI_COLOR_FOREGROUND);
   else if (g == 4)
-    display.drawBitmap(128, 137, num_4, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 137, num_4, 3, 5, UI_COLOR_FOREGROUND);
   else if (g == 5)
-    display.drawBitmap(128, 137, num_5, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 137, num_5, 3, 5, UI_COLOR_FOREGROUND);
   else if (g == 6)
-    display.drawBitmap(128, 137, num_6, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 137, num_6, 3, 5, UI_COLOR_FOREGROUND);
   else if (g == 7)
-    display.drawBitmap(128, 137, num_7, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 137, num_7, 3, 5, UI_COLOR_FOREGROUND);
   else if (g == 8)
-    display.drawBitmap(128, 137, num_8, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 137, num_8, 3, 5, UI_COLOR_FOREGROUND);
   else if (g == 9)
-    display.drawBitmap(128, 137, num_9, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(128, 137, num_9, 3, 5, UI_COLOR_FOREGROUND);
 
   if (h == 0)
-    display.drawBitmap(132, 137, num_0, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 137, num_0, 3, 5, UI_COLOR_FOREGROUND);
   else if (h == 1)
-    display.drawBitmap(132, 137, num_1, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 137, num_1, 3, 5, UI_COLOR_FOREGROUND);
   else if (h == 2)
-    display.drawBitmap(132, 137, num_2, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 137, num_2, 3, 5, UI_COLOR_FOREGROUND);
   else if (h == 3)
-    display.drawBitmap(132, 137, num_3, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 137, num_3, 3, 5, UI_COLOR_FOREGROUND);
   else if (h == 4)
-    display.drawBitmap(132, 137, num_4, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 137, num_4, 3, 5, UI_COLOR_FOREGROUND);
   else if (h == 5)
-    display.drawBitmap(132, 137, num_5, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 137, num_5, 3, 5, UI_COLOR_FOREGROUND);
   else if (h == 6)
-    display.drawBitmap(132, 137, num_6, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 137, num_6, 3, 5, UI_COLOR_FOREGROUND);
   else if (h == 7)
-    display.drawBitmap(132, 137, num_7, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 137, num_7, 3, 5, UI_COLOR_FOREGROUND);
   else if (h == 8)
-    display.drawBitmap(132, 137, num_8, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 137, num_8, 3, 5, UI_COLOR_FOREGROUND);
   else if (h == 9)
-    display.drawBitmap(132, 137, num_9, 3, 5, DARKMODE ? GxEPD_WHITE : GxEPD_BLACK);
+    display.drawBitmap(132, 137, num_9, 3, 5, UI_COLOR_FOREGROUND);
 }
