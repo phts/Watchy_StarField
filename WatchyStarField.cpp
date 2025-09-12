@@ -24,7 +24,7 @@ void WatchyStarField::handleButtonPress()
       RTC.read(currentTime);
       Watchy::vibMotor(300, (currentTime.Hour > (uint8_t)12 ? currentTime.Hour - (uint8_t)12 : currentTime.Hour) * 2);
       delay(700);
-      Watchy::vibMotor(200, (currentTime.Minute / (uint8_t)10) * 2);
+      Watchy::vibMotor(200, (currentTime.Minute / (uint8_t)10) * 2 + 1);
       return;
     }
   }
