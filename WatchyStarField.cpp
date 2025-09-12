@@ -1,5 +1,5 @@
+#include <ChronosESP32.h>
 #include <math.h>
-
 #include "WatchyStarField.h"
 #include "settings.h"
 #include "Dusk2Dawn.h"
@@ -11,6 +11,7 @@
 #include "icons.h"
 
 RTC_DATA_ATTR bool HOUR_SET = true;
+RTC_DATA_ATTR String bleMacAddress;
 
 moonPhaser moonP;
 
@@ -760,4 +761,40 @@ void WatchyStarField::drawSun()
     display.drawBitmap(132, 137, num_8, 3, 5, UI_COLOR_FOREGROUND);
   else if (h == 9)
     display.drawBitmap(132, 137, num_9, 3, 5, UI_COLOR_FOREGROUND);
+}
+
+void WatchyStarField::initBle(OnConnectionCallback onConnectionCallback, OnNotificationCallback onNotificationCallback)
+{
+  app.setConnectionCallback(onConnectionCallback);
+  app.setNotificationCallback(onNotificationCallback);
+
+  app.begin(); // initializes the BLE
+  // make sure the ESP32 is not paired with your phone in the bluetooth settings
+  // go to Chronos app > Watches tab > Watches button > Pair New Devices > Search > Select your board
+  // you only need to do it once. To disconnect, click on the rotating icon (Top Right)
+
+  bleMacAddress = app.getAddress();
+
+  app.setBattery(80); // set the battery level, will be synced to the app
+
+  // app.clearNotifications(); // clear the default notification (Chronos app install text)
+
+  app.set24Hour(true); // the 24 hour mode will be overwritten when the command is received from the app
+  // this modifies the return of the functions below
+  app.getAmPmC(true); // 12 hour mode true->(am/pm), false->(AM/PM), if 24 hour mode returns empty string ("")
+  app.getHourC();     // (0-12), (0-23)
+  app.getHourZ();     // zero padded hour (00-12), (00-23)
+  app.is24Hour();     // returns whether in 24 hour mode
+}
+
+void WatchyStarField::showAbout()
+{
+  Watchy::showAbout();
+  display.print("BLE MAC address: ");
+  display.println(bleMacAddress);
+}
+
+void WatchyStarField::tick()
+{
+  app.loop();
 }
