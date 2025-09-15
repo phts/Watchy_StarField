@@ -42,7 +42,8 @@ void notificationCallback(Notification notification)
 
 void setup()
 {
-  // Serial.begin(9600);
+  Serial.begin(9600);
+  Serial.println("begin");
   watchy.init();
   watchy.initBle(connectionCallback, notificationCallback);
 }

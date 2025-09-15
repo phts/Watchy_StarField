@@ -13,7 +13,7 @@ class WatchyStarField : public Watchy
   using Watchy::Watchy;
 
 public:
-  WatchyStarField(const watchySettings &s) : Watchy(s), app("Watchy") {};
+  WatchyStarField(const watchySettings &s) : Watchy(s), chronos("Watchy") {};
   void initBle(OnConnectionCallback onConnectionCallback, OnNotificationCallback onNotificationCallback);
   void drawWatchFace();
   void drawTime();
@@ -28,7 +28,8 @@ public:
   void tick();
 
 private:
-  ChronosESP32 app;
+  ChronosESP32 chronos;
+  String _bleMacAddress;
 };
 
 #endif
