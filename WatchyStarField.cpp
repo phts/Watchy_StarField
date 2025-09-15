@@ -762,10 +762,11 @@ void WatchyStarField::drawSun()
     display.drawBitmap(132, 137, num_9, 3, 5, UI_COLOR_FOREGROUND);
 }
 
-void WatchyStarField::initBle(OnConnectionCallback onConnectionCallback, OnNotificationCallback onNotificationCallback)
+void WatchyStarField::initBle()
 {
-  chronos.setConnectionCallback(onConnectionCallback);
-  chronos.setNotificationCallback(onNotificationCallback);
+  // chronos.setConnectionCallback(onConnectionCallback);
+  // chronos.setNotificationCallback(onNotificationCallback);
+  _bleMacAddress = "none";
 
   chronos.begin(); // initializes the BLE
   // make sure the ESP32 is not paired with your phone in the bluetooth settings
@@ -773,24 +774,24 @@ void WatchyStarField::initBle(OnConnectionCallback onConnectionCallback, OnNotif
   // you only need to do it once. To disconnect, click on the rotating icon (Top Right)
 
   _bleMacAddress = chronos.getAddress();
-  Serial.println(_bleMacAddress);
+  // Serial.println(_bleMacAddress);
 
-  chronos.setBattery(80); // set the battery level, will be synced to the app
+  // chronos.setBattery(80); // set the battery level, will be synced to the app
 
   // chronos.clearNotifications(); // clear the default notification (Chronos app install text)
 
-  chronos.set24Hour(true); // the 24 hour mode will be overwritten when the command is received from the app
+  // chronos.set24Hour(true); // the 24 hour mode will be overwritten when the command is received from the app
   // this modifies the return of the functions below
-  chronos.getAmPmC(true); // 12 hour mode true->(am/pm), false->(AM/PM), if 24 hour mode returns empty string ("")
-  chronos.getHourC();     // (0-12), (0-23)
-  chronos.getHourZ();     // zero padded hour (00-12), (00-23)
-  chronos.is24Hour();     // returns whether in 24 hour mode
+  // chronos.getAmPmC(true); // 12 hour mode true->(am/pm), false->(AM/PM), if 24 hour mode returns empty string ("")
+  // chronos.getHourC();     // (0-12), (0-23)
+  // chronos.getHourZ();     // zero padded hour (00-12), (00-23)
+  // chronos.is24Hour();     // returns whether in 24 hour mode
 }
 
 void WatchyStarField::showAbout()
 {
   Watchy::showAbout();
-  display.print("BLE MAC address: ");
+  display.print("ble mac: ");
   display.println(_bleMacAddress);
   display.display(true);
 }

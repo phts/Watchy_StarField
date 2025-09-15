@@ -14,7 +14,7 @@ class WatchyStarField : public Watchy
 
 public:
   WatchyStarField(const watchySettings &s) : Watchy(s), chronos("Watchy") {};
-  void initBle(OnConnectionCallback onConnectionCallback, OnNotificationCallback onNotificationCallback);
+  void initBle();
   void drawWatchFace();
   void drawTime();
   void drawDate();
