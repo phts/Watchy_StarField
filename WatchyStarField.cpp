@@ -169,11 +169,7 @@ void WatchyStarField::drawDate()
   String dayOfWeek = dayStr(currentTime.Wday);
   dayOfWeek = dayOfWeek.substring(0, 3);
   display.getTextBounds(dayOfWeek, 5, 85, &x1, &y1, &w, &h);
-  if (currentTime.Wday == 4)
-  {
-    w = w - 5;
-  }
-  display.setCursor(76 - w, 86);
+  display.setCursor(64 - w, 86);
   display.println(dayOfWeek);
 
   String month = monthShortStr(currentTime.Month);
