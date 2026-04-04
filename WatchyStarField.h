@@ -1,6 +1,9 @@
 #ifndef WATCHY_STAR_FIELD_H
 #define WATCHY_STAR_FIELD_H
+
+#ifndef WATCHY_SIM
 #include <Watchy.h>
+#endif
 
 class WatchyStarField : public Watchy
 {

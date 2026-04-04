@@ -7,7 +7,12 @@
 #ifndef Dusk2Dawn_h
 #define Dusk2Dawn_h
 
+#ifndef WATCHY_SIM
 #include "Arduino.h"
+#else
+#include "..\..\arduino.h"
+#endif
+
 #include <math.h>
 
 class Dusk2Dawn

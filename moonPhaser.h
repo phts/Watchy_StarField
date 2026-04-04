@@ -9,7 +9,12 @@
 #ifndef MoonPhaser_h
 #define MoonPhaser_h
 
+
+#ifndef WATCHY_SIM
 #include "Arduino.h"
+#else
+#include "..\..\arduino.h"
+#endif
 
 struct moonData_t
 {
